@@ -17,6 +17,7 @@ function inc(e) {
     var pu=Number(tr.querySelector(".unitPrice").innerHTML)
     var total=counter*pu
     tr.querySelector(".price").innerHTML=total
+    som()
 }
 
 var btn_minus=document.querySelectorAll(".minus")
@@ -40,7 +41,53 @@ function tnk(s) {
         var pu=Number(tr.querySelector(".unitPrice").innerHTML)
         var total=counter*pu
         tr.querySelector(".price").innerHTML=total
+        som()
     }
   
+
+}
+ 
+var heart=document.querySelectorAll(".like")
+
+for (let k = 0; k < heart.length; k++) {
+    
+    heart[k].addEventListener("click",pnk)
+    
+}
+
+function pnk(p) {
+    var cible=p.target
+    
+    if (cible.style.color!=="red") {
+
+        cible.style.color="red"
+    }
+    else{
+        cible.style.color="#424242"
+    }
+}
+var remv=document.querySelectorAll(".delete")
+
+for (let r = 0; r < remv.length; r++) {
+    
+remv[r].addEventListener("click",rem)
+    
+}
+function rem(r) {
+var cible=r.target
+var tr=cible.parentElement.parentElement.parentElement.parentElement
+tr.querySelector(".price").innerHTML=0
+som()
+tr.remove()
+}
+var price_total=document.querySelectorAll(".price")
+function som() {
+    var sum = 0
+    for (let i  = 0; i < price_total.length; i++) {
+        
+        sum=sum+Number(price_total[i].innerHTML)
+        document.getElementById("total").innerHTML=sum
+        
+    }
 
 }
